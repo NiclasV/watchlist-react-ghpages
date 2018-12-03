@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 5px;
 }
 
 div {
@@ -33,4 +34,9 @@ div {
   to {
     transform: rotate(360deg);
   }
+}
+
+/** NAV **/
+.nav {
+  background-color: #FFF; 
 }
