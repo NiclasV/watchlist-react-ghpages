@@ -1,0 +1,22 @@
+/* NAVIGATION */
+
+.nav {
+    background-color: $white;
+    color: $wBlack;
+    border-bottom: 5px solid $wBlue;
+    display: flex;
+    flex-wrap: no-wrap;
+    min-height: 80px;
+    justify-content: space-between;
+    &__logo {
+        max-width: 100%;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+.navItem {
+    width: 30%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
