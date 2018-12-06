@@ -8,6 +8,7 @@
     flex-wrap: no-wrap;
     min-height: 80px;
     justify-content: space-between;
+    padding: 0 20px 0 20px;
     &__logo {
         max-width: 100%;
         margin-top: auto;
@@ -16,7 +17,9 @@
 }
 
 .navItem {
-    width: 30%;
     margin-top: auto;
     margin-bottom: auto;
+    &__logo {
+        width: 40%;
+    }
 }

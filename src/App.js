@@ -8,13 +8,14 @@ class App extends Component {
     super(props);
       this.state = { 
         activeTitle: "Title",
+        isLoggedIn: false
       };
   }
 
   render() {
     return (
       <div className="App">
-        <Navigation/>
+        <Navigation isLoggedIn={this.state.isLoggedIn}/>
         <Search/>
       </div>
     );

@@ -1,6 +1,10 @@
 /* APP-GENERAL */
+body {
+  background: #e0e0e0; }
+
 .App {
-  text-align: center; }
+  text-align: center;
+  max-width: 1140px; }
 
 div {
   margin-bottom: 20px; }
@@ -45,13 +49,15 @@ div {
   display: flex;
   flex-wrap: no-wrap;
   min-height: 80px;
-  justify-content: space-between; }
+  justify-content: space-between;
+  padding: 0 20px 0 20px; }
   .nav__logo {
     max-width: 100%;
     margin-top: auto;
     margin-bottom: auto; }
 
 .navItem {
-  width: 30%;
   margin-top: auto;
   margin-bottom: auto; }
+  .navItem__logo {
+    width: 40%; }

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
@@ -28,7 +26,20 @@ const styles = theme => ({
     color:'white',
     border: 'white'
   },
-
+  unfocusedField: {
+    borderWidth: "1px",
+    borderColor: "white !important"
+  },
+  unfocusedLabel: {
+    color: "#FFF"
+  },
+  focusedField: {
+    borderWidth: "1px",
+    borderColor: "#2196f3 !important"
+  },
+  focusedLabel: {
+    color: "#2196f3 !important"
+  },
 });
 
 class OutlinedTextFields extends React.Component {
@@ -51,16 +62,22 @@ class OutlinedTextFields extends React.Component {
             InputProps={{
                 classes: {
                 input: classes.multilineColor,
+                notchedOutline: classes.focusedField,
+                focused: classes.focusedField
+                },
+            }}
+            InputLabelProps={{
+                classes: {
+                root: classes.focusedLabel,
+                notchedOutline: classes.focusedField
                 },
             }}
             id="outlined-name"
             label="SEARCH FOR MOVIE OR SERIES"
             className={classes.textField}
-            value={this.state.name}
             onChange={this.handleChange('name')}
             margin="normal"
             variant="outlined"
-            autoFocus="true"
         />
       </form>
     );

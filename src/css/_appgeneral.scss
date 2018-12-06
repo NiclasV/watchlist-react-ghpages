@@ -1,7 +1,12 @@
 /* APP-GENERAL */
 
-.App {
+  body {
+    background: $wWhite;
+  }
+
+  .App {
     text-align: center;
+    max-width: 1140px;
   }
   
   div {
