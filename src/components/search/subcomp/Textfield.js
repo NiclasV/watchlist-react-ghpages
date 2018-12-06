@@ -13,7 +13,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: "400px",
-    marginTop: "100px",
+    marginTop: "150px",
     color: "#FFF"
   },
   dense: {

@@ -10,7 +10,11 @@ class Navigation extends Component {
         <div className="nav">
             <Menu/>
             <Logo/>
-            <Login/>
+            <Login
+              responseFacebook={this.props.responseFacebook}
+              componentClicked={this.props.componentClicked}
+              isLoggedIn={this.props.isLoggedIn}
+            />
         </div>
     );  
   }

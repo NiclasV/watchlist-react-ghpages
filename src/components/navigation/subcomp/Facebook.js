@@ -1,32 +1,16 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 class Facebook extends Component {
-    state = {
-        isLoggedIn: false,
-        userID: '',
-        name: '',
-        email: '',
-        picture: ''
-    }
-
-    componentClicked = () => console.log('clicked');
-
-    responseFacebook = response => {
-        this.setState({
-            isLoggedIn: true,
-            userID: response.id,
-            name: response.name,
-            email: response.email,
-            picture: response.picture.data.url,
-        })
-    }
 
     render() {
         let fbContent;
 
-        if(this.state.isLoggedIn) {
-            fbContent = null; 
+        if(this.props.isLoggedIn) {
+            fbContent = (
+                <AccountCircle/>
+            ); 
         } else {
             fbContent = (
                 <FacebookLogin
@@ -34,8 +18,8 @@ class Facebook extends Component {
                     autoLoad={false}
                     textButton=" Login"
                     fields="name,email,picture"
-                    onClick={this.componentClicked}
-                    callback={this.responseFacebook} 
+                    onClick={this.props.componentClicked}
+                    callback={this.props.responseFacebook} 
                     icon="fa-facebook"
                     size="small"
                 />
@@ -45,7 +29,6 @@ class Facebook extends Component {
         return (
             <div className="navItem">
                 {fbContent}
-                {console.log(this.props.isLoggedIn)}
             </div> 
         );  
     }
