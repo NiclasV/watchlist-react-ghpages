@@ -43,14 +43,12 @@ class App extends Component {
           email: response.email,
           picture: response.picture.data.url,
         },
-
       })
   }
 
   getMovies = (value) => {
     let baseUrl = "http://www.omdbapi.com/";
     let key = "apikey=acfee4fa";
-  
 
     fetch(baseUrl + "?s=" + value + "&plot=full&" + key)
     .then((response) => response.json())
@@ -62,7 +60,6 @@ class App extends Component {
           searchResults: response.Search
         },
       });
-      console.log(response);
     })
     .catch((error) => {
       console.log(error)

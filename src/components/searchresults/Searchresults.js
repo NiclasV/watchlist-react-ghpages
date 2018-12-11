@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
+import MovieCard from './subcomp/MovieCard';
 
-export default class Searchresults extends Component {
+const section = {
+    padding: "15px",
+    backgroundColor: "black"
+}
+
+class Searchresults extends Component {
     
     
     contentBuild() {
         let content = '';
 
         if(this.props.movieSearch.search === "True" ) {
-            return 'WHAT';
+            content = <MovieCard/>
         } else {
-            return '';
+            content = "";
         }
+        return content;
     }
     
 
     render() {
         return (
-            <div>
+            <div className={section}>
                 {this.contentBuild()}
             </div>
         );
     }
 }
+
+export default Searchresults;
