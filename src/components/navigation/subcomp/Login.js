@@ -9,7 +9,7 @@ class Login extends Component {
             <Facebook
               responseFacebook={this.props.responseFacebook}
               componentClicked={this.props.componentClicked}
-              isLoggedIn={this.props.isLoggedIn}
+              user={this.props.user}
             />
         </div>
     );  

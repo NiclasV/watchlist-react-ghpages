@@ -1,0 +1,21 @@
+.background {
+    background:url('../images/recommended.jpg');
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-top: 5px solid $wGreen;
+    border-bottom: 10px solid $wGreen;
+}
+
+.layer {
+    background-color: rgba(43, 43, 43, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 25px 15px 25px 15px;
+}

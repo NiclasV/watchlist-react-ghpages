@@ -7,7 +7,12 @@ class Search extends Component {
   render() {
     return (
         <Div primary>
-            <OutlinedTextFields/>
+            <OutlinedTextFields 
+              handleChange={this.props.handleChange}
+              movieSearch={this.props.movieSearch}
+              searchvalue={this.props.searchvalue}
+              getMovies={this.props.getMovies}
+            />
         </Div>
     );  
   }

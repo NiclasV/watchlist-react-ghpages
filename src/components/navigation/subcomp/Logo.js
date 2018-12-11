@@ -7,7 +7,7 @@ class Logo extends Component {
     return (
         <div className="navItem__logo navItem">
             <div className="nav__logo">
-                <img src={mainLogo} className="img-fluid" alt="logotype"/>
+                <a href="/"><img src={mainLogo} className="img-fluid" alt="logotype"/></a>
             </div>
         </div>
     );  

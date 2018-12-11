@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -7,31 +7,23 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: "center"
+    justifyContent: "center",
+    padding: "10px"
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: "400px",
-    marginTop: "150px",
+    marginTop: "120px",
     color: "#FFF"
   },
   dense: {
     marginTop: 16,
   },
-  menu: {
-    width: 400,
-  },
   multilineColor:{
     color:'white',
-    border: 'white'
-  },
-  unfocusedField: {
-    borderWidth: "1px",
-    borderColor: "white !important"
-  },
-  unfocusedLabel: {
-    color: "#FFF"
+    border: 'white',
+    fontWeight: "400",
   },
   focusedField: {
     borderWidth: "1px",
@@ -42,17 +34,9 @@ const styles = theme => ({
   },
 });
 
-class OutlinedTextFields extends React.Component {
-  state = {
-    name: 'Title or IMDB-ID',
-  };
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
 
+class OutlinedTextFields extends Component {
   render() {
     const { classes } = this.props;
 
@@ -75,7 +59,14 @@ class OutlinedTextFields extends React.Component {
             id="outlined-name"
             label="SEARCH FOR MOVIE OR SERIES"
             className={classes.textField}
-            onChange={this.handleChange('name')}
+            onChange={this.props.handleChange('searchvalue')}
+            onKeyPress={(ev) => {
+              if (ev.key === 'Enter') {
+                ev.preventDefault();
+                console.log(this.props.searchvalue)
+                this.props.getMovies()
+              }
+            }}
             margin="normal"
             variant="outlined"
         />

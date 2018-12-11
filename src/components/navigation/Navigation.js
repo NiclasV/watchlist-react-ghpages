@@ -13,7 +13,7 @@ class Navigation extends Component {
             <Login
               responseFacebook={this.props.responseFacebook}
               componentClicked={this.props.componentClicked}
-              isLoggedIn={this.props.isLoggedIn}
+              user={this.props.user}
             />
         </div>
     );  
