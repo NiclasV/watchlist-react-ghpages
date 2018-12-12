@@ -63,7 +63,7 @@ class OutlinedTextFields extends Component {
             onKeyPress={(ev) => {
               if (ev.key === 'Enter') {
                 ev.preventDefault();
-                this.props.getMovies()
+                this.props.getMovies(this.props.searchvalue)
               }
             }}
             margin="normal"
