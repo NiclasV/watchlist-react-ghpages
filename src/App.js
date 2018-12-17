@@ -22,11 +22,27 @@ class App extends Component {
           totalResults: '',
           searchResults: ''
         },
-        searchvalue: 'Title or IMDB-ID'  
+        movie: {
+          search: "false",
+          response: {
+
+          },
+        },
+        searchvalue: 'Title or IMDB-ID',
+        watchlists: [
+          {
+            created: "2018-12-14 11:31:30",
+            description: "A collection of movies to watch",
+            id: "1",
+            movies: "",
+            title: "Movies to watch",
+            userid: "1"
+          }
+        ]
       };
   }
 
-  handleChange = searchvalue => event => {
+  handleSearch = searchvalue => event => {
     this.setState({
       [searchvalue]: event.target.value,
     });
@@ -44,6 +60,7 @@ class App extends Component {
           picture: response.picture.data.url,
         },
       })
+      this.getWatchlists()
   }
 
   getMovies = (value) => {
@@ -66,6 +83,39 @@ class App extends Component {
     })
   }
 
+  getTitle = (imdbid) => {
+    console.log("getting title");
+    let baseUrl = "http://www.omdbapi.com/";
+    let key = "apikey=acfee4fa";
+    
+    fetch(baseUrl + "?i=" + imdbid + "&plot=full&" + key)
+    .then((response) => response.json())
+    .then((response) => {
+      this.setState({
+        movie: {
+          response: response
+        },
+      });
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
+  getWatchlists() {
+      /* Fetching all watchlists from database based on userID */
+      fetch('http://localhost/php/getwatchlists.php?userID=' + this.state.user.userID)
+      .then((response) => response.json())
+      .then((response) => {
+          this.setState({
+            watchlists: response,
+          })
+      })
+      .catch((error) => {
+          console.error(error);
+      })
+  }
+
   render() {
     return (
       <div className="App">
@@ -76,13 +126,21 @@ class App extends Component {
         />
         <Router>
           <div>
-            <Route path="/" render={(props) => <StartPage {...props} 
+            <Route path="/" render={(props) => 
+            <StartPage {...props} 
               movieSearch={this.state.movies}
-              handleChange={this.handleChange}
+              handleSearch={this.handleSearch}
               searchvalue={this.state.searchvalue}
               getMovies={this.getMovies}
+              getTitle={this.getTitle}
+              userInfo={this.state.user}
+              watchlists={this.state.watchlists}
             />} exact  />
-            <Route path="/ProfilePage" component={ProfilePage} />
+            <Route path="/ProfilePage"  render={(props) => 
+            <ProfilePage {...props} 
+               userInfo={this.state.user}
+               isLoggedIn={this.state.user.isLoggedIn}
+            />}/>
           </div>
         </Router>
         <Footer/>

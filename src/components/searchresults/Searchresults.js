@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import MovieCard from './subcomp/MovieCard';
 
-const section = {
-    padding: "15px",
-    backgroundColor: "black"
-}
-
 class Searchresults extends Component {
-
+    handlePoster(image) {
+        if(image === "N/A") {
+            return "http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg";
+        } else {
+            return image;
+        }
+    }
     contentBuild() {
         let content = '';
-
+        
         if(this.props.movieSearch.search === "True" ) {
             content = this.props.movieSearch.searchResults.map((movie) =>
             <MovieCard 
-                Title={movie.Title}
-                Poster={movie.Poster}
+                title={movie.Title}
+                poster={movie.Poster}
+                year={movie.Year}
+                imdbID={movie.imdbID}
+                getTitle={this.props.getTitle}
+                key={movie.imdbID}
+                handlePoster={this.handlePoster}
             />
         );
         } else {
@@ -23,18 +29,12 @@ class Searchresults extends Component {
         }
         return content;
     }
-    
-    testing() {
-        if(this.props.movieSearch.search === "True" ) {
-            console.log(this.props.movieSearch.searchResults[0].Title)
-        } 
-    }
 
     render() {
+        
         return (
-            <div className={section}>
+            <div className="flexboxSearch">
                 {this.contentBuild()}
-                {this.testing()}
             </div>
         );
     }

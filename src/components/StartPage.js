@@ -7,18 +7,30 @@ import '../css/App.css';
 
 class StartPage extends Component {
 
-
+  checkSearch() {
+    if(this.props.movieSearch.search === "True") {
+      return  <Searchresults 
+                movieSearch={this.props.movieSearch}
+                getTitle={this.props.getTitle}  
+              />
+    }
+  }
   render() {
     return (
       <div className="mainContent">
         <Search 
-          handleChange={this.props.handleChange}
+          handleSearch={this.props.handleSearch}
           movieSearch={this.props.movieSearch}
           searchvalue={this.props.searchvalue}
           getMovies={this.props.getMovies}
+          getTitle={this.props.getTitle}
         />
-        <Searchresults movieSearch={this.props.movieSearch}/>
-        <Watchlists/>
+        {this.checkSearch()}
+        <Watchlists
+          userID={this.props.userInfo.userID}
+          watchlists={this.props.watchlists}
+          page="startpage"
+        />
         <Recommended/>
       </div>
     );

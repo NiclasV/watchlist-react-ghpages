@@ -19,15 +19,14 @@ export default class Watchlist extends Component {
                           <MoreVertIcon />
                         </IconButton>
                     }
-                    title="Movies to Watch"
-                    subheader="A collection of movies to watch"
+                    title={this.props.title}
+                    subheader={this.props.description}
                     titleTypographyProps={{align:"left"}}
                     subheaderTypographyProps={{align:"left"}}
                     /> 
                     <HrTitles/>
                     <CardContent>
                     
-                        WHAT
                     </CardContent>
                 </Card>
             </div>

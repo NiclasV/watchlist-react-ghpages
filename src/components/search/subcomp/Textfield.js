@@ -59,7 +59,7 @@ class OutlinedTextFields extends Component {
             id="outlined-name"
             label="SEARCH FOR MOVIE OR SERIES"
             className={classes.textField}
-            onChange={this.props.handleChange('searchvalue')}
+            onChange={this.props.handleSearch('searchvalue')}
             onKeyPress={(ev) => {
               if (ev.key === 'Enter') {
                 ev.preventDefault();

@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import bgImage from '../images/netflixbg2.jpg';
+import bgProfile from '../images/bgprofile.jpg';
 
 const div = styled.div `
     min-height: 300px;
@@ -10,7 +11,15 @@ const div = styled.div `
         props.primary &&
         css`
             background-image: url(${bgImage});
-    `};
+    `
+    };
+    ${props =>
+        props.profile &&
+        css`
+            background-image: url(${bgProfile});
+            z-index: -100;
+        ` 
+    };
 `;
 
 export default div;

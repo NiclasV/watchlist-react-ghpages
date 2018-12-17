@@ -83,9 +83,9 @@ class Facebook extends Component {
             fbContent = (
                 <FacebookLogin
                     appId="2007701916194555"
-                    autoLoad={false}
+                    autoLoad={true}
                     textButton=" Login"
-                    fields="name,email,picture"
+                    fields="name,email,picture.type(large)"
                     onClick={this.props.componentClicked}
                     callback={this.props.responseFacebook} 
                     icon="fa-facebook"

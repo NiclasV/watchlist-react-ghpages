@@ -19,3 +19,13 @@
     height: 100%;
     padding: 25px 15px 25px 15px;
 }
+
+.flexboxrec {
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: center;
+}
+
+.recTitle {
+    margin: 40px;
+}

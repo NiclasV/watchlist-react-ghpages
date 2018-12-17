@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,43 +11,50 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    maxWidth: 345,
-    marginTop: "20px",
+    maxWidth: 300,
+    marginTop: 15,
+    marginBottom: 15,
+    margin: "0 auto"
   },
   media: {
-    height: "140px",
+    height: 240,
+    width: 300
   },
 };
 
-export default class MovieCard extends Component {
-  render() {
-    return (
-      <Card>
-        <CardActionArea>
-          <CardMedia
-            className={styles}
-            image={this.props.Poster}
-            title={this.props.Title}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {this.props.Title}
-            </Typography>
-            <Typography component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
-    );
-  }
+function MovieCard(props) {
+  
+  const { classes } = props;
+  
+  return (
+    <Card className={classes.card}
+      onClick={() => props.getTitle(props.imdbID)}
+    >
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={props.handlePoster(props.poster)}
+          title={props.title}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {props.title} ({props.year})
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
 }
+
+MovieCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  imdbID: PropTypes.string.isRequired,
+  getTitle: PropTypes.func.isRequired,
+  handlePoster: PropTypes.func.isRequired
+
+};
+
+export default withStyles(styles)(MovieCard);
