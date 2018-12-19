@@ -74,7 +74,7 @@ class Facebook extends Component {
                         open={open}
                         onClose={this.handleClose}
                     >
-                        <MenuItem onClick={this.handleClose}><a href="/ProfilePage">My Profile</a></MenuItem>
+                        <MenuItem onClick={this.handleClose}><a href="/ProfilePage">My profile</a></MenuItem>
                     </Menu>
 
               </div>

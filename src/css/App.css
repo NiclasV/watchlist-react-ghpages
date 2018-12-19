@@ -92,6 +92,15 @@ body {
   .navItem__logo {
     max-width: 210px; }
 
+li a {
+  color: #2a2b2c;
+  text-transform: uppercase;
+  font-family: 'roboto' !important;
+  font-size: 0.97em; }
+  li a:hover {
+    color: #2a2b2c;
+    text-decoration: none; }
+
 /* FOOTER */
 footer {
   background-color: #2a2b2c;
@@ -131,7 +140,7 @@ footer {
   background-size: cover;
   position: relative;
   width: 100%;
-  min-height: 400px;
+  min-height: 650px;
   margin-top: 40px;
   border-top: 5px solid #4caf50;
   border-bottom: 10px solid #4caf50; }
@@ -147,11 +156,25 @@ footer {
 
 .flexboxrec {
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: wrap;
   justify-content: center; }
 
 .recTitle {
-  margin: 40px; }
+  margin: 30px;
+  margin-top: 50px;
+  width: 40%; }
+  .recTitle__poster {
+    width: 60%;
+    height: auto;
+    margin-bottom: 20px; }
+  .recTitle__year {
+    font-weight: 100;
+    color: #e0e0e0;
+    font-size: 1.5em; }
+  .recTitle__genres {
+    font-weight: 100;
+    color: #6d6d6d;
+    font-size: 1.3em; }
 
 /* Searchresults */
 .flexboxSearch {
@@ -186,3 +209,7 @@ p {
   margin-block-end: 0;
   margin-inline-start: 0px;
   margin-inline-end: 0px; }
+
+.watchlist {
+  margin-bottom: 15px;
+  margin-top: 15px; }

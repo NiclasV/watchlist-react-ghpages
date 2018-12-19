@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import AddToListBtn from './AddToListBtn';
+import AddToListDialog from '../../dialogs/AddToListDialog';
 
 const styles = {
   card: {
@@ -32,6 +33,10 @@ const styles = {
       marginTop: 10,
       marginBottom: 10
   },
+  extramargin: {
+    marginTOp: 10,
+    marginBottom: 10,
+  }
 };
 
 function MovieCard(props) {
@@ -39,26 +44,29 @@ function MovieCard(props) {
   const { classes } = props;
   
   return (  
-    <Card className={classes.card}>
+    <Card className={classes.card} raised="true">
         <div className={classes.poster}>
         <img src={props.movie.Poster} alt="movie poster"/>
         </div>
         <div className={classes.movie}>
             <Typography variant="h3" >
-            {props.movie.Title} ({props.movie.Year})
+              {props.movie.Title} ({props.movie.Year})
             </Typography>
             <p className={classes.genres}>{props.movie.Genre}</p><br/>
             <p className="movieinfo">{props.movie.Plot}</p><br/>
             <span className="detailheading">Director </span><span className="movieinfo">{props.movie.Director}</span><br/>   
             <span className="detailheading">Actors </span><span className="movieinfo">{props.movie.Actors}</span><br/>
-            <span className="detailheading">Writer </span><span className="movieinfo">{props.movie.Writer}</span><br/>
+            <span className="detailheading">Writer </span><span className="movieinfo">{props.movie.Writer}</span><br/><br/>
             <AddToListBtn
-              handleChange={props.handleChange}
-              watchlists={props.watchlists}
+              handleClickOpen={props.handleClickOpen}
+            />
+           <AddToListDialog
               open={props.open}
               handleClickOpen={props.handleClickOpen}
               handleClose={props.handleClose}
-            />
+              handleChange={props.handleChange}
+              watchlists={props.watchlists}
+           />
         </div>
     </Card>
   );

@@ -9,10 +9,9 @@ import HrTitles from './HrTitles';
 export default class Watchlist extends Component {
 
     render() {
-
         return(
-            <div>
-                <Card>
+            <div className="watchlist">
+                <Card raised="true">
                     <CardHeader 
                     action={
                         <IconButton>

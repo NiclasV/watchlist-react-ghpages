@@ -20,6 +20,7 @@ class ProfilePage extends Component {
           watchlists={this.props.watchlists}
           handleChange={this.props.handleChange}
           createList={this.props.createList}
+          page="profilepage"
         />
       </div>
     );

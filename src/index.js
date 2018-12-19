@@ -25,7 +25,7 @@ const theme = {
     overrides: {
         MuiTypography: {
             h1: {
-                fontSize: "4.1rem",
+                fontSize: "3.5rem",
                 color: "#2b2b2b",
                 [breakpoints.down("xs")]: {
                 fontSize: "2.2rem"

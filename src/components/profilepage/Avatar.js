@@ -10,10 +10,10 @@ const styles = {
   },
   bigAvatar: {
     margin: 10,
-    width: 300,
-    height: 300,
+    width: 350,
+    height: 350,
     border: "10px solid #FFF",
-    marginTop: "-200px",
+    marginTop: "-230px",
     zIndex: 100,
     boxShadow: "2px 2px 5px 0px rgba(0,0,0,0.43)"
   },

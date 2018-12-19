@@ -38,9 +38,9 @@ function ProfileCard(props) {
   const { classes } = props;
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} raised="true">
       <CardContent>
-        <Typography className={classes.title} color="#2b2b2b" gutterBottom>
+        <Typography className={classes.title} color="default" gutterBottom>
           {props.name}
         </Typography>
         <Typography component="p" className={classes.info} align="center"> 
@@ -50,6 +50,7 @@ function ProfileCard(props) {
           Popular Genres xx <br/>
         </Typography>
       </CardContent>
+      {console.log(props.lists)}
     </Card>
   );
 }
@@ -57,7 +58,7 @@ function ProfileCard(props) {
 ProfileCard.propTypes = {
   classes: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  lists: PropTypes.string.isRequired,
+  lists: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(ProfileCard);

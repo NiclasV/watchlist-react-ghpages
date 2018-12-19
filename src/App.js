@@ -115,7 +115,7 @@ class App extends Component {
     let baseUrl = "http://www.omdbapi.com/";
     let key = "apikey=acfee4fa";
     
-    fetch(baseUrl + "?i=" + imdbid + "&plot=short&" + key)
+    fetch(baseUrl + "?i=" + imdbid + "&plot=full&" + key)
     .then((response) => response.json())
     .then((response) => {
       this.setState({

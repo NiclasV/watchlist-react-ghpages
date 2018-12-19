@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../../css/App.css';
 import Typography from '@material-ui/core/Typography';
 import CreateListButton from './CreateListButton';
-
+import CreateListDialog from '../../dialogs/CreateListDialog';
 
 const header = {
     display: "flex",
@@ -14,17 +14,22 @@ const header = {
 
 export default class Header extends Component {
 
-
     render() {
         return (
             <div style={header}>
                 <Typography variant="h1" align="left">
                     Your Watchlists
                 </Typography>
-               <CreateListButton 
+                <CreateListButton 
+                    handleClickOpen={this.props.handleClickOpen}
+                />
+                <CreateListDialog
+
+                    open={this.props.open}
+                    handleClose={this.props.handleClose}
                     handleChange={this.props.handleChange}
                     createList={this.props.createList}
-               />
+                />
             </div>
         );
     }

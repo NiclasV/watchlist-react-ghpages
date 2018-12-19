@@ -13,7 +13,7 @@ class Watchlists extends Component {
         open: false,
     };
 
-    handleOpen = () => {
+    handleClickOpen = () => {
         this.setState({ open: true });
     };
 
@@ -21,15 +21,23 @@ class Watchlists extends Component {
         this.setState({ open: false });
     };
 
-
-
     buildWatchlist() {
         var content = '';
 
         if(this.props.watchlists === null) {
             content = <Watchlist title="loading" description="loading" />;
-                    
+             
             return content;
+        } else if (this.props.page === "profilepage") {
+            content = this.props.watchlists.map((watchlist) => 
+            <Watchlist
+                key={watchlist.id}
+                title={watchlist.title}
+                description={watchlist.description}
+            />
+            
+        );
+        return content;
         } else {
             let i = this.props.watchlists.length - 1; 
 
@@ -46,6 +54,9 @@ class Watchlists extends Component {
                     <Header
                         handleChange={this.props.handleChange}
                         createList={this.props.createList}
+                        handleClickOpen={this.handleClickOpen}
+                        open={this.state.open}
+                        handleClose={this.handleClose}
                     />
                     {this.buildWatchlist()}
                     <OutlinedButton

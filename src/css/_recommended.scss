@@ -3,7 +3,7 @@
     background-size: cover;
     position: relative;
     width: 100%;
-    min-height: 400px;
+    min-height: 650px;
     margin-top: 40px;
     border-top: 5px solid $wGreen;
     border-bottom: 10px solid $wGreen;
@@ -21,10 +21,27 @@
 
 .flexboxrec {
     display: flex;
-    flex-wrap: no-wrap;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .recTitle {
-    margin: 40px;
+    margin: 30px;
+    margin-top: 50px;
+    width: 40%;
+    &__poster {
+        width: 60%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    &__year {
+        font-weight: 100;
+        color: $wWhite;
+        font-size: 1.5em;
+    }
+    &__genres {
+        font-weight: 100;
+        color: $wGrey;
+        font-size: 1.3em;
+    }
 }

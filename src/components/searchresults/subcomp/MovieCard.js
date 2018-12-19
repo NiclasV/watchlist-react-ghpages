@@ -27,7 +27,7 @@ function MovieCard(props) {
   const { classes } = props;
   
   return (
-    <Card className={classes.card}
+    <Card className={classes.card} raised="true"
       onClick={() => props.goSingleMovie(props.imdbID)}
     >
       <CardActionArea>

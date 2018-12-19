@@ -7,8 +7,7 @@ class ProfileImage extends Component {
   render() {
     return (
       <div>
-        <Div profile>
-            
+        <Div profile="true">
         </Div>
         <Avatar 
           userPic={this.props.userInfo.picture}  

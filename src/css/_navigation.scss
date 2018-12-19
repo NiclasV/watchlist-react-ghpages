@@ -24,3 +24,13 @@
     }
 }
 
+li a {
+    color: $wBlack;
+    text-transform: uppercase;
+    font-family: 'roboto' !important;
+    font-size: 0.97em;
+    &:hover {
+        color: $wBlack;
+        text-decoration: none;
+    }
+}
