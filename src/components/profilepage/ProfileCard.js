@@ -28,6 +28,9 @@ const styles = {
     fontSize: 24,
     lineHeight: 1.2,
     fontWeight: "100"
+  },
+  bold: {
+    fontWeight: 700,
   }
 };
 
@@ -37,11 +40,11 @@ function ProfileCard(props) {
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography className={classes.title} color="primary" gutterBottom>
+        <Typography className={classes.title} color="#2b2b2b" gutterBottom>
           {props.name}
         </Typography>
         <Typography component="p" className={classes.info} align="center"> 
-          Total lists x <br/>
+          Total lists <span className={classes.bold}>{props.lists}</span><br/>
           Popular Director xx <br/>
           Popular Actor xx <br/>
           Popular Genres xx <br/>
@@ -54,6 +57,7 @@ function ProfileCard(props) {
 ProfileCard.propTypes = {
   classes: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
+  lists: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(ProfileCard);

@@ -4,7 +4,7 @@ class HrTitles extends Component {
     render() {
         return (
             <div className="strike">
-                <span>X titles in list</span>
+                <span>No titles in list</span>
             </div>
         )
     }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../../../css/App.css';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CreateListButton from './CreateListButton';
+
 
 const header = {
     display: "flex",
@@ -21,7 +21,10 @@ export default class Header extends Component {
                 <Typography variant="h1" align="left">
                     Your Watchlists
                 </Typography>
-               <CreateListButton />
+               <CreateListButton 
+                    handleChange={this.props.handleChange}
+                    createList={this.props.createList}
+               />
             </div>
         );
     }

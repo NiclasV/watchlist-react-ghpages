@@ -14,9 +14,12 @@ class ProfilePage extends Component {
         />
         <ProfileCard
           name={this.props.userInfo.name}
+          lists={this.props.watchlists.length}
         />
         <Watchlists
-          
+          watchlists={this.props.watchlists}
+          handleChange={this.props.handleChange}
+          createList={this.props.createList}
         />
       </div>
     );

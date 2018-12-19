@@ -5,7 +5,7 @@ import Watchlist from './subcomp/Watchlist';
 import OutlinedButton from '../buttons/buttonOutline';
 
 const style = {
-    padding: "15px"
+    padding: "25px"
 }
 
 class Watchlists extends Component {
@@ -20,15 +20,34 @@ class Watchlists extends Component {
     handleClose = () => {
         this.setState({ open: false });
     };
-    
+
+
+
+    buildWatchlist() {
+        var content = '';
+
+        if(this.props.watchlists === null) {
+            content = <Watchlist title="loading" description="loading" />;
+                    
+            return content;
+        } else {
+            let i = this.props.watchlists.length - 1; 
+
+            content = <Watchlist title={this.props.watchlists[i].title} description={this.props.watchlists[i].description} />;
+
+
+            return content;
+        }
+    }
+
     render() {
             return (
                 <div style={style}>
-                    <Header/>
-                    <Watchlist
-                        title={this.props.watchlists[0].title}
-                        description={this.props.watchlists[0].description}   
+                    <Header
+                        handleChange={this.props.handleChange}
+                        createList={this.props.createList}
                     />
+                    {this.buildWatchlist()}
                     <OutlinedButton
                         buttonText="See all lists"
                         buttonSize="large"

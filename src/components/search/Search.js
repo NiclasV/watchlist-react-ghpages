@@ -8,7 +8,7 @@ class Search extends Component {
     return (
         <Div primary>
             <OutlinedTextFields 
-              handleSearch={this.props.handleSearch}
+              handleChange={this.props.handleChange}
               movieSearch={this.props.movieSearch}
               searchvalue={this.props.searchvalue}
               getMovies={this.props.getMovies}

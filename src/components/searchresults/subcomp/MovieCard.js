@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    maxWidth: 300,
+    maxWidth: 280,
     marginTop: 15,
     marginBottom: 15,
     margin: "0 auto"
@@ -28,7 +28,7 @@ function MovieCard(props) {
   
   return (
     <Card className={classes.card}
-      onClick={() => props.getTitle(props.imdbID)}
+      onClick={() => props.goSingleMovie(props.imdbID)}
     >
       <CardActionArea>
         <CardMedia
@@ -42,6 +42,11 @@ function MovieCard(props) {
           </Typography>
         </CardContent>
       </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Add to list
+        </Button>
+      </CardActions>
     </Card>
   );
 }
@@ -52,7 +57,7 @@ MovieCard.propTypes = {
   poster: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
   imdbID: PropTypes.string.isRequired,
-  getTitle: PropTypes.func.isRequired,
+  goSingleMovie: PropTypes.func.isRequired,
   handlePoster: PropTypes.func.isRequired
 
 };
