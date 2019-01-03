@@ -10,8 +10,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default class AddToListDialog extends Component {
 
-    handleCreate = (listid) => {
-        this.props.saveMovieToList(listid);
+    handleCreate = (listid, imdbid) => {
+        this.props.saveMovieToList(listid, imdbid);
         this.props.handleClose();
     }
 
@@ -53,7 +53,7 @@ export default class AddToListDialog extends Component {
                     <Button onClick={this.props.handleClose} color="primary">
                     Cancel
                     </Button>
-                    <Button onClick={() => this.handleCreate(this.props.selectedWatchlist)} color="primary" variant="contained">
+                    <Button onClick={() => this.handleCreate(this.props.selectedWatchlist, this.props.imdbid)} color="primary" variant="contained">
                         + Add to list
                     </Button>
                 </DialogActions>

@@ -6,8 +6,9 @@ $array = json_decode(json_encode($watchlist), True);
 
 $title = $array['listname'];
 $userid = $array['userID'];
-$movies = $array['movies'];
+$movies = array();
+$encodedMovies = json_encode($movies);
 $listdescription = $array['listdescription'];
 
-$statementPerson = mysqli_query($connect, "INSERT INTO watchlists (`title`, `movies`, `userid`, `description`) 
-	VALUES ('$title', '$movies', '$userid', '$listdescription')");
+$listcreate = mysqli_query($connect, "INSERT INTO watchlists (`title`, `movies`, `userid`, `description`) 
+	VALUES ('$title', '$encodedMovies', '$userid', '$listdescription')");

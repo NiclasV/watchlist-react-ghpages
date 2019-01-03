@@ -70,7 +70,7 @@ function MovieCard(props) {
                 handleClose={props.handleClose}
                 handleChange={props.handleChange}
                 watchlists={props.watchlists}
-                currentMovie={props.movie}
+                imdbid={props.movie.imdbID}
                 selectedWatchlist={props.selectedWatchlist}
                 saveMovieToList={props.saveMovieToList}
             />

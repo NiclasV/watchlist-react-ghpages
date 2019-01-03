@@ -170,8 +170,23 @@ class App extends Component {
     })
   }
 
-  saveMovieToList = (listid) => {
-    console.log('Saving movie to database ' + listid)
+  saveMovieToList = (listid, imdbid) => {
+    var watchlists = this.state.watchlists;
+    var watchlistIndex = watchlists.findIndex(function(element){return element.id === listid})
+    var watchlistMovies = watchlists[watchlistIndex].movies
+    watchlistMovies.push(imdbid)
+  
+    return fetch('http://localhost/php/savetolist.php?listID=' + listid, {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(watchlistMovies)
+      })
+      .then((response) => {
+        console.log(watchlistMovies);
+      })
+      .catch((error) => {
+        console.error(error);
+    })
   }
 
   getWatchlists = (userid) => {
