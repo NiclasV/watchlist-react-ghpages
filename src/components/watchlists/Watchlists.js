@@ -11,6 +11,7 @@ const style = {
 class Watchlists extends Component {
     state = {
         open: false,
+
     };
 
     handleClickOpen = () => {
@@ -20,6 +21,7 @@ class Watchlists extends Component {
     handleClose = () => {
         this.setState({ open: false });
     };
+
 
     buildWatchlist() {
         var content = '';
@@ -32,8 +34,11 @@ class Watchlists extends Component {
             content = this.props.watchlists.map((watchlist) => 
             <Watchlist
                 key={watchlist.id}
+                watchlistid={watchlist.id}
                 title={watchlist.title}
                 description={watchlist.description}
+                getWatchlists={this.props.getWatchlists}
+                userID={this.props.userID}
             />
             
         );
@@ -41,7 +46,13 @@ class Watchlists extends Component {
         } else {
             let i = this.props.watchlists.length - 1; 
 
-            content = <Watchlist title={this.props.watchlists[i].title} description={this.props.watchlists[i].description} />;
+            content = <Watchlist 
+                title={this.props.watchlists[i].title} 
+                description={this.props.watchlists[i].description} 
+                getWatchlists={this.props.getWatchlists}
+                userID={this.props.userID}
+                watchlistid={this.props.watchlists[i].id}                
+                />;
 
 
             return content;
@@ -55,8 +66,10 @@ class Watchlists extends Component {
                         handleChange={this.props.handleChange}
                         createList={this.props.createList}
                         handleClickOpen={this.handleClickOpen}
-                        open={this.state.open}
+                        isopen={this.state.open}
                         handleClose={this.handleClose}
+                        getWatchlists={this.props.getWatchlists}
+                        userID={this.props.userID}
                     />
                     {this.buildWatchlist()}
                     <OutlinedButton

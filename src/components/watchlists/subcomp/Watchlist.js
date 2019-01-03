@@ -5,27 +5,74 @@ import CardHeader from '@material-ui/core/CardHeader';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import HrTitles from './HrTitles';
+import VertMenu from '../../menu/Menu';
 
 export default class Watchlist extends Component {
+    state = {
+        anchorEl: null,
+    };
+
+    handleClick = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+    
+    deleteList = (id) => {
+        console.log('Deleting' + this.props.watchlistid)
+
+        window.confirm('Are you sure you want to delete this list?');
+            let data = {
+                id: id,
+            }
+
+        return fetch('http://localhost/php/deletelist.php', {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify(data)
+            })
+            .then((response) => {
+              console.log(data); 
+              this.handleClose();
+              this.props.getWatchlists(this.props.userID)
+            })
+            .catch((error) => {
+              console.error(error);
+          })        
+        
+    }
 
     render() {
+        const { anchorEl } = this.state;
+
         return(
             <div className="watchlist">
-                <Card raised="true">
+                <Card raised={true}>
                     <CardHeader 
-                    action={
-                        <IconButton>
-                          <MoreVertIcon />
-                        </IconButton>
-                    }
-                    title={this.props.title}
-                    subheader={this.props.description}
-                    titleTypographyProps={{align:"left"}}
-                    subheaderTypographyProps={{align:"left"}}
+                        action={
+                            <IconButton
+                                aria-owns={anchorEl ? 'simple-menu' : undefined}
+                                aria-haspopup="true"
+                                onClick={this.handleClick}
+                            >
+                                <MoreVertIcon />
+                            </IconButton>
+                        }
+                        title={this.props.title}
+                        subheader={this.props.description}
+                        titleTypographyProps={{align:"left"}}
+                        subheaderTypographyProps={{align:"left"}}
                     /> 
+                    <VertMenu
+                        anchorEl={this.state}
+                        handleClose={this.handleClose}
+                        deleteList={this.deleteList}
+                        watchlistid={this.props.watchlistid}
+                    />
                     <HrTitles/>
                     <CardContent>
-                    
                     </CardContent>
                 </Card>
             </div>

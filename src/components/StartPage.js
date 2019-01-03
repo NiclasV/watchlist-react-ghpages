@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Search from './search/Search';
 import Watchlists from './watchlists/Watchlists';
 import Recommended from './recommended/Recommended';
-import Searchresults from './searchresults/Searchresults'
+import Searchresults from './searchresults/Searchresults';
 import '../css/App.css';
 
 class StartPage extends Component {
@@ -22,13 +22,17 @@ class StartPage extends Component {
     if(this.props.movieSearch.search === "True") {
       return  <Searchresults 
                 movieSearch={this.props.movieSearch}
-                getTitle={this.props.getTitle}  
+                getTitle={this.props.getTitle}
+                saveMovieToDatabase={this.props.saveMovieToDatabase}
                 singleMovie={this.props.singleMovie}
                 watchlists={this.props.watchlists}
                 handleChange={this.props.handleChange}
+                selectedWatchlist={this.props.selectedWatchlist}
+                saveMovieToList={this.props.saveMovieToList}
               />
     }
   }
+
   render() {
     return (
       <div className="mainContent">
@@ -47,6 +51,7 @@ class StartPage extends Component {
           page="startpage"
           handleChange={this.props.handleChange}
           createList={this.props.createList}
+          getWatchlists={this.props.getWatchlists}
         />
         <Recommended/>
       </div>

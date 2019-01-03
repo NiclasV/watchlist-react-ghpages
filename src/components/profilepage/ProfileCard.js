@@ -38,7 +38,7 @@ function ProfileCard(props) {
   const { classes } = props;
 
   return (
-    <Card className={classes.card} raised="true">
+    <Card className={classes.card} raised={true}>
       <CardContent>
         <Typography className={classes.title} color="default" gutterBottom>
           {props.name}
@@ -50,7 +50,6 @@ function ProfileCard(props) {
           Popular Genres xx <br/>
         </Typography>
       </CardContent>
-      {console.log(props.lists)}
     </Card>
   );
 }

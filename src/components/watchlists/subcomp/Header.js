@@ -24,11 +24,12 @@ export default class Header extends Component {
                     handleClickOpen={this.props.handleClickOpen}
                 />
                 <CreateListDialog
-
-                    open={this.props.open}
+                    getWatchlists={this.props.getWatchlists}
+                    isopen={this.props.isopen}
                     handleClose={this.props.handleClose}
                     handleChange={this.props.handleChange}
                     createList={this.props.createList}
+                    userID={this.props.userID}
                 />
             </div>
         );

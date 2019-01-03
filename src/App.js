@@ -25,7 +25,6 @@ class App extends Component {
         movie: {
           search: false,
           response: {
-
           },
         },
         searchvalue: "Search for movie or series",
@@ -33,14 +32,13 @@ class App extends Component {
           {
             created: "2018-12-14 11:31:30",
             description: "A collection of movies to watch",
-            id: "1",
-            movies: "",
+            movies: [],
             title: "Movies to watch",
             userid: "1"
           }
         ],
-        listname: "N/A",
-        listdescription: "N/A", 
+        listname: "Movies to watch",
+        listdescription: "A collection of movies to watch", 
         selectedwatchlist: "N/A"
       };
   }
@@ -56,16 +54,15 @@ class App extends Component {
         listname: this.state.listname,
         listdescription: this.state.listdescription,
         userID: this.state.user.userID,
-        movies: {},
-      }
-      
+        movies: [],
+      }     
       return fetch('http://localhost/php/create.php', {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify(data)
         })
         .then((response) => {
-          console.log(data);
+          this.getWatchlists(this.state.user.userID)
         })
         .catch((error) => {
           console.error(error);
@@ -84,7 +81,7 @@ class App extends Component {
           picture: response.picture.data.url,
         },
       })
-      this.getWatchlists()
+      this.getWatchlists(this.state.user.userID)
   }
 
   getMovies = (value) => {
@@ -130,18 +127,67 @@ class App extends Component {
     })
   }
 
-  getWatchlists() {
+  saveMovieToDatabase = (imdbid, title, year, rated, released, runtime, genre, director, writer, actors, plot, language, country, awards, poster, ratings, metascore, imdbrating, imdbvotes, type, dvd, boxoffice, production, website, trailer) => {
+
+    let movie = {
+      imdbid: imdbid,
+      title: title,
+      year: year,
+      rated: rated,
+      released: released,
+      runtime: runtime,
+      genre: genre,
+      director: director,
+      writer: writer,
+      actors: actors,
+      plot: plot,
+      language: language,
+      country: country,
+      awards: awards,
+      poster: poster,
+      ratings: ratings,
+      metascore: metascore,
+      imdbrating: imdbrating,
+      imdbvotes: imdbvotes,
+      type: type,
+      dvd: dvd,
+      boxoffice: boxoffice,
+      production: production,
+      website: website,
+      trailer: trailer,
+    }
+
+    return fetch('http://localhost/php/createmovie.php', {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(movie)
+        })
+        .then((response) => {
+          console.log(movie);
+        })
+        .catch((error) => {
+          console.error(error);
+    })
+  }
+
+  saveMovieToList = (listid) => {
+    console.log('Saving movie to database ' + listid)
+  }
+
+  getWatchlists = (userid) => {
       /* Fetching all watchlists from database based on userID */
-      fetch('http://localhost/php/getwatchlists.php?userID=' + this.state.user.userID)
+      
+      fetch('http://localhost/php/getwatchlists.php?userID=' + userid)
       .then((response) => response.json())
       .then((response) => {
           this.setState({
             watchlists: response,
           })
-          if(this.state.watchlists === null) {
+          setTimeout(()=>{
+            if(this.state.watchlists === null) {
               this.createList()
-              this.getWatchlists()
-          }
+            }  
+          }, 500 )
       })
       .catch((error) => {
           console.error(error);
@@ -169,7 +215,12 @@ class App extends Component {
               userInfo={this.state.user}
               watchlists={this.state.watchlists}
               createList={this.createList}
+              getWatchlists={this.getWatchlists}
+              saveMovieToDatabase={this.saveMovieToDatabase}
+              selectedWatchlist={this.state.selectedwatchlist}
+              saveMovieToList={this.saveMovieToList}
             />} exact  />
+
             <Route path="/ProfilePage" render={(props) => 
             <ProfilePage {...props} 
               userInfo={this.state.user}
@@ -177,6 +228,7 @@ class App extends Component {
               watchlists={this.state.watchlists}
               createList={this.createList}
               handleChange={this.handleChange}
+              getWatchlists={this.getWatchlists}
             />}/>
           </div>
         </Router>

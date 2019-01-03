@@ -21,6 +21,8 @@ class ProfilePage extends Component {
           handleChange={this.props.handleChange}
           createList={this.props.createList}
           page="profilepage"
+          getWatchlists={this.props.getWatchlists}
+          userID={this.props.userInfo.userID}
         />
       </div>
     );

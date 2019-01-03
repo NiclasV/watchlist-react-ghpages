@@ -42,14 +42,19 @@ class Searchresults extends Component {
                 handlePoster={this.handlePoster}
             />
         );
+
         } else if (this.props.singleMovie.search === true) {
             content = <MovieCardFull
                         movie={this.props.singleMovie.response}
                         watchlists={this.props.watchlists}
                         handleChange={this.props.handleChange}
-                        open={this.state.open}
+                        isopen={this.state.open}
                         handleClickOpen={this.handleClickOpen}
                         handleClose={this.handleClose} 
+                        saveMovieToDatabase={this.props.saveMovieToDatabase}
+                        selectedWatchlist={this.props.selectedWatchlist}
+                        handlePoster={this.handlePoster}
+                        saveMovieToList={this.props.saveMovieToList}
             />;
         }
         return content;

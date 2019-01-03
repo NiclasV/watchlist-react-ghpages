@@ -40,13 +40,12 @@ const styles = {
 };
 
 function MovieCard(props) {
-  
   const { classes } = props;
-  
+
   return (  
-    <Card className={classes.card} raised="true">
+    <Card className={classes.card} raised={true}  >
         <div className={classes.poster}>
-        <img src={props.movie.Poster} alt="movie poster"/>
+        <img src={props.handlePoster(props.movie.Poster)} alt="movie poster"/>
         </div>
         <div className={classes.movie}>
             <Typography variant="h3" >
@@ -59,14 +58,22 @@ function MovieCard(props) {
             <span className="detailheading">Writer </span><span className="movieinfo">{props.movie.Writer}</span><br/><br/>
             <AddToListBtn
               handleClickOpen={props.handleClickOpen}
+              saveMovieToDatabase={props.saveMovieToDatabase}
+              movie={props.movie}
+              variant="contained" 
+              color="primary" 
+              size="large"
             />
-           <AddToListDialog
-              open={props.open}
-              handleClickOpen={props.handleClickOpen}
-              handleClose={props.handleClose}
-              handleChange={props.handleChange}
-              watchlists={props.watchlists}
-           />
+            <AddToListDialog
+                isopen={props.isopen}
+                handleClickOpen={props.handleClickOpen}
+                handleClose={props.handleClose}
+                handleChange={props.handleChange}
+                watchlists={props.watchlists}
+                currentMovie={props.movie}
+                selectedWatchlist={props.selectedWatchlist}
+                saveMovieToList={props.saveMovieToList}
+            />
         </div>
     </Card>
   );
@@ -76,10 +83,14 @@ MovieCard.propTypes = {
   classes: PropTypes.object.isRequired,
   movie: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
-  watchlists: PropTypes.object.isRequired,
-  open: PropTypes.string.isRequired,
+  watchlists: PropTypes.array.isRequired,
+  isopen: PropTypes.bool.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
-  handleClose: PropTypes.func.isRequired 
+  handleClose: PropTypes.func.isRequired,
+  saveMovieToDatabase: PropTypes.func.isRequired,
+  selectedWatchlist: PropTypes.string.isRequired,
+  handlePoster: PropTypes.func.isRequired,
+  saveMovieToList: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(MovieCard);

@@ -10,10 +10,17 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default class CreateListDialog extends Component {
 
+    handleCreate = (userID) => {
+        this.props.createList();
+        this.props.handleClose();
+        this.props.getWatchlists(userID)
+        console.log(userID)
+    }
+
     render() {
         return(
             <Dialog
-                open={this.props.open}
+                open={this.props.isopen}
                 onClose={this.props.handleClose}
                 aria-labelledby="form-dialog-title"
                 >
@@ -42,9 +49,9 @@ export default class CreateListDialog extends Component {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.props.handleClose} color="primary">
-                    Cancel
+                        Cancel
                     </Button>
-                    <Button onClick={ () => this.props.createList()} color="primary" variant="contained">
+                    <Button onClick={ () => this.handleCreate(this.props.userID)} color="primary" variant="contained">
                         Create list
                     </Button>
                 </DialogActions>

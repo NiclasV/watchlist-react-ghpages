@@ -10,10 +10,15 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default class AddToListDialog extends Component {
 
+    handleCreate = (listid) => {
+        this.props.saveMovieToList(listid);
+        this.props.handleClose();
+    }
+
     render() {
         return(
             <Dialog
-                open={this.props.open}
+                open={this.props.isopen}
                 onClose={this.props.handleClose}
                 aria-labelledby="form-dialog-title"
                 >
@@ -23,7 +28,7 @@ export default class AddToListDialog extends Component {
                         Select the watchlist in which you want the movie
                     </DialogContentText>
                     <TextField
-                        id="filled-select-currency-native"
+                        id="watchlists-selector"
                         select
                         label="Watchlists"
                         className=""
@@ -38,7 +43,7 @@ export default class AddToListDialog extends Component {
                         variant="filled"
                         >
                         {this.props.watchlists.map(watchlist => (
-                            <option key={watchlist.id} value={watchlist.title}>
+                            <option key={watchlist.id} value={watchlist.id}>
                             {watchlist.title}
                             </option>
                         ))}
@@ -48,7 +53,7 @@ export default class AddToListDialog extends Component {
                     <Button onClick={this.props.handleClose} color="primary">
                     Cancel
                     </Button>
-                    <Button onClick={this.props.handleClose} color="primary" variant="contained">
+                    <Button onClick={() => this.handleCreate(this.props.selectedWatchlist)} color="primary" variant="contained">
                         + Add to list
                     </Button>
                 </DialogActions>
