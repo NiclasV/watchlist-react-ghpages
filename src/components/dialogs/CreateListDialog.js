@@ -14,7 +14,6 @@ export default class CreateListDialog extends Component {
         this.props.createList();
         this.props.handleClose();
         this.props.getWatchlists(userID)
-        console.log(userID)
     }
 
     render() {
