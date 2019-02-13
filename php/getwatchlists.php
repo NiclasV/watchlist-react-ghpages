@@ -5,7 +5,8 @@ if(!$connect){
     die('could not connect: ' . mysqli_connect_error());
 }
 
-$userID = $_GET['userID'];
+//$userID = $_GET['userID'];
+$userID = "10155936284020936";
 
 $watchlists = mysqli_query($connect, "SELECT * FROM watchlists WHERE userid= '$userID'");
 
