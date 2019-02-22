@@ -36,5 +36,5 @@ $production = $array['production'];
 $website = $array['website'];
 $trailer = $array['trailer'];
 
-$movieadd = mysqli_query($connect, "INSERT INTO movies (`imdbid`, `title`, `year`, `rated`, `released`, `runtime`, `genre`, `director`, `writer`, `actors`, `plot`, `language`, `country`, `awards`, `poster`, `ratings`, `metascore`, `imdbrating`, `imdbvotes`, `type`, `dvd`, `boxoffice`, `production`, `website`, `trailer`) 
+$movieadd = mysqli_query($connect, "INSERT INTO movies (`imdbid`, `movietitle`, `year`, `rated`, `released`, `runtime`, `genre`, `director`, `writer`, `actors`, `plot`, `language`, `country`, `awards`, `poster`, `ratings`, `metascore`, `imdbrating`, `imdbvotes`, `type`, `dvd`, `boxoffice`, `production`, `website`, `trailer`) 
 	VALUES ('$imdbid', '$newTitle', '$year', '$rated', '$released', '$runtime', '$genre', '$newDirector', '$newWriter', '$newActors', '$newPlot', '$language', '$country', '$awards', '$poster', '$ratings', '$metascore', '$imdbrating', '$imdbvotes', '$type', '$dvd', '$newBoxoffice', '$production', '$website', '$trailer')");

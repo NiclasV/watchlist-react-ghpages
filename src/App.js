@@ -171,18 +171,18 @@ class App extends Component {
   }
 
   saveMovieToList = (listid, imdbid) => {
-    var watchlists = this.state.watchlists;
-    var watchlistIndex = watchlists.findIndex(function(element){return element.id === listid})
-    var watchlistMovies = watchlists[watchlistIndex].movies
-    watchlistMovies.push(imdbid)
+    //var watchlists = this.state.watchlists;
+    //var watchlistIndex = watchlists.findIndex(function(element){return element.id === listid})
+    //var watchlistMovies = watchlists[watchlistIndex].movies
+    //watchlistMovies.push(imdbid)
   
-    return fetch('http://localhost/php/savetolist.php?listID=' + listid, {
+    return fetch('http://localhost/php/savetolist.php?listID=' + listid + '?imdbID=' + imdbid, {
       method: "POST",
       mode: "no-cors",
-      body: JSON.stringify(watchlistMovies)
+      body: "JSON.stringify(watchlistMovies)"
       })
       .then((response) => {
-        console.log(watchlistMovies);
+        //console.log(watchlistMovies);
       })
       .catch((error) => {
         console.error(error);

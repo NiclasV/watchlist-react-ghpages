@@ -39,6 +39,7 @@ class Watchlists extends Component {
                 description={watchlist.description}
                 getWatchlists={this.props.getWatchlists}
                 userID={this.props.userID}
+                movies={watchlist.movies}
             />
             
         );
@@ -52,6 +53,7 @@ class Watchlists extends Component {
                 getWatchlists={this.props.getWatchlists}
                 userID={this.props.userID}
                 watchlistid={this.props.watchlists[i].id}                
+                movies={this.props.watchlists[i].movies}
                 />;
 
 

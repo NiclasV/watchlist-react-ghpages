@@ -44,6 +44,14 @@ export default class Watchlist extends Component {
         
     }
 
+    printMovies = () => {
+        var movies = '';
+
+        this.props.movies.map((movie) => 
+           {console.log(movie)}
+        );
+    }
+
     render() {
         const { anchorEl } = this.state;
 
@@ -73,6 +81,8 @@ export default class Watchlist extends Component {
                     />
                     <HrTitles/>
                     <CardContent>
+                        {this.props.movies.map((movie) => <h1>{movie.movietitle}</h1> )}
+                
                     </CardContent>
                 </Card>
             </div>
