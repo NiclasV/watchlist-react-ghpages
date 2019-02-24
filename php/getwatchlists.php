@@ -5,22 +5,16 @@ if(!$connect){
     die('could not connect: ' . mysqli_connect_error());
 }
 
-//$userID = $_GET['userID'];
-$userID = "10155936284020936";
+$userID = $_GET['userID'];
 
 $watchlists = mysqli_query($connect, "SELECT * FROM watchlists WHERE userid= '$userID'");
-
-// $watchlists = mysqli_query($connect, "SELECT watchlists.title, watchlists.id, watchlists.description, movies.movietitle, movies.imdbid
-// FROM watchlist_movies
-// LEFT JOIN watchlists on watchlist_movies.watchlistId=watchlists.id
-// INNER JOIN movies on watchlist_movies.movieId=movies.id");
-
 
 while($row = mysqli_fetch_assoc($watchlists)){
 
     $watchlistid = $row['id'];
 
-    $moviequery = mysqli_query($connect, "SELECT movies.movietitle, movies.imdbid, watchlists.id
+    $moviequery = mysqli_query($connect, "SELECT watchlists.id, movies.movietitle, movies.imdbid, movies.poster, movies.year, movies.rated, movies.released, movies.runtime, movies.genre,
+    movies.director, movies.writer, movies.actors, movies.plot, movies.language, movies.country, movies.metascore, movies.imdbrating, movies.imdbvotes, movies.type
     FROM watchlist_movies
     LEFT JOIN watchlists on watchlist_movies.watchlistId=watchlists.id
     INNER JOIN movies on watchlist_movies.movieId=movies.id
@@ -33,18 +27,14 @@ while($row = mysqli_fetch_assoc($watchlists)){
     } 
 
     $row['movies'] = array();
-
-    foreach($movies as $mov ){
-        array_push($row['movies'], $mov);
+    
+    foreach($movies as $movie){
+        array_push($row['movies'], $movie);
     }
-    
-    
     $output[]=$row;
-    
 
 }
 
-//var_dump($output);
 print(json_encode($output, JSON_PRETTY_PRINT));
 
 mysqli_close($connect);

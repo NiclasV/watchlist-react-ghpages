@@ -6,6 +6,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import HrTitles from './HrTitles';
 import VertMenu from '../../menu/Menu';
+import MovieItem from './MovieItem';
+import OutlinedButton from '../../buttons/buttonOutline';
 
 export default class Watchlist extends Component {
     state = {
@@ -23,7 +25,7 @@ export default class Watchlist extends Component {
     deleteList = (id) => {
         console.log('Deleting' + this.props.watchlistid)
 
-        window.confirm('Are you sure you want to delete this list?');
+        if (window.confirm('Are you sure you want to delete this list?')) {
             let data = {
                 id: id,
             }
@@ -34,22 +36,14 @@ export default class Watchlist extends Component {
             body: JSON.stringify(data)
             })
             .then((response) => {
-              console.log(data); 
-              this.handleClose();
               this.props.getWatchlists(this.props.userID)
             })
             .catch((error) => {
               console.error(error);
-          })        
+          })       
+        }
+             
         
-    }
-
-    printMovies = () => {
-        var movies = '';
-
-        this.props.movies.map((movie) => 
-           {console.log(movie)}
-        );
     }
 
     render() {
@@ -79,11 +73,26 @@ export default class Watchlist extends Component {
                         deleteList={this.deleteList}
                         watchlistid={this.props.watchlistid}
                     />
-                    <HrTitles/>
+                    <HrTitles
+                        titles={this.props.movies.length}
+                    />
                     <CardContent>
-                        {this.props.movies.map((movie) => <h1>{movie.movietitle}</h1> )}
-                
+                    <div className="movies-container">
+                        {this.props.movies.slice(0, 8).map((movie) =>
+                            <MovieItem
+                                movie={movie}
+                                key={movie.imdbid}
+                                getWatchlists={this.props.getWatchlists}
+                                userID={this.props.userID}
+                            />     
+                        )}
+                    </div> 
                     </CardContent>
+                    <OutlinedButton
+                        buttonText="See list"
+                        buttonSize="large"
+                        buttonColor="primary"
+                    />
                 </Card>
             </div>
         );

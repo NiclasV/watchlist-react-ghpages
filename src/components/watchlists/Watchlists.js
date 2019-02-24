@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../css/App.css';
 import Header from './subcomp/Header';
 import Watchlist from './subcomp/Watchlist';
-import OutlinedButton from '../buttons/buttonOutline';
+//import OutlinedButton from '../buttons/buttonOutline';
 
 const style = {
     padding: "25px"
@@ -74,11 +74,11 @@ class Watchlists extends Component {
                         userID={this.props.userID}
                     />
                     {this.buildWatchlist()}
-                    <OutlinedButton
+                    {/* <OutlinedButton
                         buttonText="See all lists"
                         buttonSize="large"
                         buttonColor="primary"
-                    />
+                    /> */}
                 </div>
             );
     }

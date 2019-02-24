@@ -5,14 +5,14 @@ if(!$connect){
     die('could not connect: ' . mysqli_connect_error());
 }
 
+// $watchlistid = json_decode(file_get_contents('php://input'));
+// $array = json_decode(json_encode($watchlistid), True);
 
-$watchlistid = json_decode(file_get_contents('php://input'));
-$array = json_decode(json_encode($watchlistid), True);
+// $id = $array['id'];
 
-echo var_dump($array);
-$id = $array['id'];
+$deleterelations = mysqli_query($connect, "SELECT FROM watchlist_movies WHERE watchlistId = '$id'");
 
-$DeleteBooking = mysqli_query($connect, "DELETE FROM watchlists WHERE id = '$id'");
+$delete = mysqli_query($connect, "DELETE FROM watchlists WHERE id = '$id'");
 mysqli_close($connect);
     
 ?>
