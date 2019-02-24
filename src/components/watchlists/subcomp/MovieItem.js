@@ -14,15 +14,21 @@ class MovieItem extends Component {
         return title;
     }
 
+    trimgenre = (props) => {
+        let genre = this.props.movie.genre;
+        if (genre.length > 48) {
+            genre = genre.substring(0, 48) + "...";
+        }
+
+        return genre;
+    }
+
     handleDelete = (id, imdbid) => {
 
         let data = {
             watchlistid: id,
             imdbid: imdbid
           }
-
-        console.log(data)
-
         if (window.confirm('You sure you wanna remove this title from the list?')) {
 
             return fetch('http://localhost/php/deletemoviefromlist.php', {
@@ -49,17 +55,19 @@ class MovieItem extends Component {
                         />
                     </div>
                     <div className="movieitem-info">
-                    <div>
-                        <p>{this.trimtitle()}</p>
-                        <span>{this.props.movie.genre}</span>
-                    </div>
-                        <IconButton
+                        <div className="movieitem-text">
+                            <p>{this.trimtitle()}</p>
+                            <span>{this.trimgenre()}</span>
+                        </div>
+                        <div className="movieitem-button">
+                            <IconButton
                                 //aria-owns={anchorEl ? 'simple-menu' : undefined}
                                 //aria-haspopup="true"
                                 onClick={() => this.handleDelete(this.props.movie.id, this.props.movie.imdbid)}
                             >
                                 <DeleteOutlineOutlined />
                             </IconButton>
+                        </div>
                     </div>
                     <hr/>
                 </div>

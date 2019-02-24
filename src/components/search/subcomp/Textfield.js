@@ -37,6 +37,17 @@ const styles = theme => ({
 
 
 class OutlinedTextFields extends Component {
+
+  handleSearch = (value) => {
+
+    if(value.startsWith("tt")) {
+        this.props.getTitle(value);
+    } else {
+        this.props.getMovies(value);
+    }
+
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -63,7 +74,8 @@ class OutlinedTextFields extends Component {
             onKeyPress={(ev) => {
               if (ev.key === 'Enter') {
                 ev.preventDefault();
-                this.props.getMovies(this.props.searchvalue)
+                //this.props.getMovies(this.props.searchvalue)
+                  this.handleSearch(this.props.searchvalue);
               }
             }}
             margin="normal"

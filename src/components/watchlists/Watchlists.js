@@ -31,7 +31,7 @@ class Watchlists extends Component {
              
             return content;
         } else if (this.props.page === "profilepage") {
-            content = this.props.watchlists.map((watchlist) => 
+            content = this.props.watchlists.slice(0).reverse().map((watchlist) => 
             <Watchlist
                 key={watchlist.id}
                 watchlistid={watchlist.id}

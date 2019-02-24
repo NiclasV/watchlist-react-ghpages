@@ -19,7 +19,7 @@ class StartPage extends Component {
   };
 
   checkSearch() {
-    if(this.props.movieSearch.search === "True") {
+    if(this.props.movieSearch.search === "True" || this.props.singleMovie.search === true) {
       return  <Searchresults 
                 movieSearch={this.props.movieSearch}
                 getTitle={this.props.getTitle}
@@ -30,12 +30,14 @@ class StartPage extends Component {
                 selectedWatchlist={this.props.selectedWatchlist}
                 saveMovieToList={this.props.saveMovieToList}
               />
+              
     }
   }
 
   render() {
     return (
       <div className="mainContent">
+      {console.log(this.props.singleMovie.search)}
         <Search 
           handleChange={this.props.handleChange}
           movieSearch={this.props.movieSearch}

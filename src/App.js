@@ -115,6 +115,7 @@ class App extends Component {
     fetch(baseUrl + "?i=" + imdbid + "&plot=full&" + key)
     .then((response) => response.json())
     .then((response) => {
+      console.log(response)
       this.setState({
         movie: {
           search: true,

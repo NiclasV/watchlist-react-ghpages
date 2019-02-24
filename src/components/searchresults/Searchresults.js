@@ -61,7 +61,6 @@ class Searchresults extends Component {
     }
 
     render() {
-        
         return (
             <div className="flexboxSearch">
                 {this.contentBuild()}
