@@ -40,8 +40,22 @@ class App extends Component {
         recommended: false,
         listname: "Movies to watch",
         listdescription: "A collection of movies to watch", 
-        selectedwatchlist: "N/A"
+        selectedwatchlist: "N/A",
+        watchlistType: "startpage",
+        fullwatchlist: "",
       };
+  }
+
+  switchWatchlistType = (type) => {
+    this.setState({
+      watchlistType: type
+    })
+  }
+
+  fullWatchlist = (id) => {
+    this.setState({
+      fullwatchlist: id
+    })
   }
 
   handleChange = searchvalue => event => {
@@ -69,8 +83,6 @@ class App extends Component {
           console.error(error);
       })
   }
-
-  //componentClicked = () => console.log('clicked');
 
   responseFacebook = (response) => {
       this.setState({
@@ -212,14 +224,12 @@ class App extends Component {
   }
 
   getRecommended = () => {
-    console.log('gettin recommended')
     fetch('http://localhost/php/getrecommended.php')
     .then((response) => response.json())
     .then((response) => {
         this.setState({
           recommended: response,
         })
-        console.log(response)
     })
     .catch((error) => {
         console.error(error);
@@ -249,6 +259,7 @@ class App extends Component {
               getMovies={this.getMovies}
               getTitle={this.getTitle}
               userInfo={this.state.user}
+              isLoggedIn={this.state.user.isLoggedIn}
               watchlists={this.state.watchlists}
               createList={this.createList}
               getWatchlists={this.getWatchlists}
@@ -257,6 +268,7 @@ class App extends Component {
               saveMovieToList={this.saveMovieToList}
               recommendedTitles={this.state.recommended}
               getRecommended={this.getRecommended}
+              watchlistType={this.state.watchlistType}
             />} exact  />
 
             <Route path="/ProfilePage" render={(props) => 
@@ -267,6 +279,10 @@ class App extends Component {
               createList={this.createList}
               handleChange={this.handleChange}
               getWatchlists={this.getWatchlists}
+              switchWatchlistType={this.switchWatchlistType}
+              watchlistType={this.state.watchlistType}
+              fullWatchlist={this.fullWatchlist}
+              activeWatchlist={this.state.fullwatchlist}
             />}/>
           </div>
         </Router>

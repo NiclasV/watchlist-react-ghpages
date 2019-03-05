@@ -11,7 +11,7 @@ const styles = theme => ({
   },
 });
 
-function OutlinedButton(props) {
+function SeeListBtn(props) {
   const { classes } = props;
   return (
         <Button 
@@ -19,19 +19,20 @@ function OutlinedButton(props) {
             color={props.buttonColor}
             className={classes.button}
             size={props.buttonSize}
-            href={props.href}
+            onClick={ () => props.fullWatchlist("single", props.watchlistid)}
         >
         {props.buttonText}
       </Button>
   );
 }
 
-OutlinedButton.propTypes = {
+SeeListBtn.propTypes = {
   classes: PropTypes.object.isRequired,
   buttonText: PropTypes.string.isRequired,
   buttonSize: PropTypes.string.isRequired,
   buttonColor: PropTypes.string.isRequired,
-  href: PropTypes.string
+  fullWatchlist: PropTypes.func,
+  watchlistid: PropTypes.string
 };
 
-export default withStyles(styles)(OutlinedButton);
+export default withStyles(styles)(SeeListBtn);

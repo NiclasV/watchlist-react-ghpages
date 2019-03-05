@@ -49,10 +49,11 @@ class StartPage extends Component {
         <Watchlists
           userID={this.props.userInfo.userID}
           watchlists={this.props.watchlists}
-          page="startpage"
           handleChange={this.props.handleChange}
           createList={this.props.createList}
           getWatchlists={this.props.getWatchlists}
+          watchlistType={this.props.watchlistType}
+          isLoggedIn={this.props.isLoggedIn}
         />
         <Recommended
           getRecommended={this.props.getRecommended}

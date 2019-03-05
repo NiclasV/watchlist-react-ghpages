@@ -18,6 +18,8 @@ const div = styled.div `
         css`
             background-image: url(${bgProfile});
             z-index: -100;
+            background-size: cover;
+            background-position: top;
         ` 
     };
 `;

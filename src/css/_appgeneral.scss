@@ -49,6 +49,17 @@
   min-height: 700px;
 }
 
+.content {
+  padding: 25px;
+
+  @include breakpoint(mobile) {
+    padding: 15px;
+  }
+  @include breakpoint(mobilesmall) {
+    padding: 10px;
+  }
+}
+
 .strike {
   display: block;
   text-align: center;

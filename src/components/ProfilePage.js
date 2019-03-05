@@ -5,8 +5,13 @@ import Watchlists from './watchlists/Watchlists'
 import '../css/App.css';
 
 class ProfilePage extends Component {
+  
+  componentDidMount() {
+      this.props.switchWatchlistType("profilepage")
+  }
 
   render() {
+
     return (
       <div className="mainContent">
         <ProfileImage
@@ -20,9 +25,12 @@ class ProfilePage extends Component {
           watchlists={this.props.watchlists}
           handleChange={this.props.handleChange}
           createList={this.props.createList}
-          page="profilepage"
           getWatchlists={this.props.getWatchlists}
           userID={this.props.userInfo.userID}
+          switchWatchlistType={this.props.switchWatchlistType}
+          fullWatchlist={this.props.fullWatchlist}
+          activeWatchlist={this.props.activeWatchlist}
+          watchlistType={this.props.watchlistType}
         />
       </div>
     );

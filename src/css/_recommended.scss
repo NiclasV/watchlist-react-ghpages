@@ -21,13 +21,21 @@
     margin: 30px;
     margin-top: 50px;
     width: 40%;
+    @include breakpoint(mobile) {
+        width: 100%;
+    }
+
     &__poster {
         margin: 0 auto;
-        width: 80%;
-        height: 300px;
+        width: 75%;
+        height: 380px;
         background-position: center;
         background-size: cover;
         margin-bottom: 20px;
+        @include breakpoint(mobile) {
+            width: 75%;
+            height: 300px;
+        }
     }
 
     &__year {

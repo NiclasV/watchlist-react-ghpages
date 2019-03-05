@@ -15,7 +15,7 @@ class VertMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.props.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>View list</MenuItem>
+          
           <MenuItem onClick={() => this.props.deleteList(this.props.watchlistid)}>Delete list</MenuItem>
         </Menu>
       </div>

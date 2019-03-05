@@ -1,0 +1,53 @@
+.moviecard {
+    padding: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+    //border: 1px solid red;
+    justify-content: space-between;
+    @include breakpoint(tablet) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+
+    &__poster {
+        width: 35%;
+        //border: 1px solid green;
+        img {
+            width: 100%;
+        }
+        @include breakpoint(tablet) {
+            width: 100%;
+            img {
+                width: 70%;
+            }
+        }
+
+    }
+
+    &__movie {
+        text-align: left;
+        padding-right: 15px;
+        width: 60%;
+        //border: 1px solid green;
+        
+        @include breakpoint(tablet) {
+            margin-top: 40px;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+        }
+        @include breakpoint(mobile) {
+            margin-top: 15px;
+            padding: 5px;
+            h3 {
+                margin-top: 0px;
+                margin-bottom: 30px;
+            }
+        }
+        &_genres {
+            color: $wBlack;
+            margin-top: 5px;
+        }
+    }
+}

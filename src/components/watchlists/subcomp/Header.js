@@ -9,16 +9,26 @@ const header = {
     flexWrap: "no-wrap",
     justifyContent: "space-between",
     marginBottom: "35px",
-    marginTop: "15px",
+    marginTop: "35px",
 }
 
 export default class Header extends Component {
+
+    generateHeader = () => {
+        if(this.props.watchlistType === "startpage") {
+            return "Latest Watchlist"
+        } else if (this.props.watchlistType === "profilepage") {
+            return "Your Watchlists"
+        } else {
+            return "Watchlist"
+        }
+    }
 
     render() {
         return (
             <div style={header}>
                 <Typography variant="h1" align="left">
-                    Your Watchlists
+                    {this.generateHeader()}
                 </Typography>
                 <CreateListButton 
                     handleClickOpen={this.props.handleClickOpen}

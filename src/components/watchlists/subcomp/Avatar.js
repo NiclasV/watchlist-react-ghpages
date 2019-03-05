@@ -8,6 +8,18 @@ const styles = {
     width: 50,
     height: 50,
   },
+  bigAvatar: {
+    margin: 10,
+    width: 320,
+    height: 320,
+    border: "10px solid #FFF",
+    marginTop: "-230px",
+    zIndex: 100,
+    boxShadow: "2px 2px 5px 0px rgba(0,0,0,0.43)",
+    alignSelf: "center",
+    textAlign: "center"
+  }
+
 };
 
 function ImageAvatars(props) {

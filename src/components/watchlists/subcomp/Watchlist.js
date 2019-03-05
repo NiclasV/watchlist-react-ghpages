@@ -7,7 +7,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import HrTitles from './HrTitles';
 import VertMenu from '../../menu/Menu';
 import MovieItem from './MovieItem';
-import OutlinedButton from '../../buttons/buttonOutline';
+import SeeListBtn from '../../buttons/SeeListBtn';
 
 export default class Watchlist extends Component {
     state = {
@@ -42,8 +42,65 @@ export default class Watchlist extends Component {
               console.error(error);
           })       
         }
-             
-        
+    }
+
+    fullWatchlist = (page, watchlistid) => {
+        this.props.fullWatchlist(watchlistid)
+        this.props.switchWatchlistType(page)
+    }
+
+    handleTitles = () => {
+        console.log(this.props.watchlistType)
+        if(this.props.watchlistType === "profilepage" || this.props.watchlistType === "startpage") {
+            return (
+                this.props.movies.slice(0, 8).map((movie) =>
+                    <MovieItem
+                        movie={movie}
+                        key={movie.imdbid}
+                        getWatchlists={this.props.getWatchlists}
+                        userID={this.props.userID}
+                    />     
+                )
+            );
+
+        } else if (this.props.watchlistType === "single") {
+            return (
+                    this.props.movies.map((movie) =>
+                    <MovieItem
+                        movie={movie}
+                        key={movie.imdbid}
+                        getWatchlists={this.props.getWatchlists}
+                        userID={this.props.userID}
+                    />     
+                )
+            );
+        }
+    }
+
+    handleButton = () => {
+        if(this.props.movies.length > 8 && this.props.watchlistType !== "single") {
+            return (
+                <SeeListBtn
+                    buttonText="See full list"
+                    buttonSize="large"
+                    buttonColor="primary"
+                    fullWatchlist={this.fullWatchlist}
+                    watchlistid={this.props.watchlistid}
+                />
+            );
+        } else {
+            return "";
+        }
+    }
+    
+    checkLogIn = () => {
+            if(this.props.isLoggedIn === "false") {
+                return (<h2>Log in to add movies to list</h2>);
+            } else {
+                return ""
+            }
+            
+
     }
 
     render() {
@@ -77,22 +134,13 @@ export default class Watchlist extends Component {
                         titles={this.props.movies.length}
                     />
                     <CardContent>
+                    {this.checkLogIn()}
                     <div className="movies-container">
-                        {this.props.movies.slice(0, 8).map((movie) =>
-                            <MovieItem
-                                movie={movie}
-                                key={movie.imdbid}
-                                getWatchlists={this.props.getWatchlists}
-                                userID={this.props.userID}
-                            />     
-                        )}
+                        {this.handleTitles()}
                     </div> 
                     </CardContent>
-                    <OutlinedButton
-                        buttonText="See list"
-                        buttonSize="large"
-                        buttonColor="primary"
-                    />
+                        {this.handleButton()}
+                        
                 </Card>
             </div>
         );

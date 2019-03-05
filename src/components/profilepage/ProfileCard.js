@@ -7,9 +7,9 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    maxWidth: 500,
+    maxWidth: 600,
     margin: "0 auto",
-    marginTop: 20
+    marginTop: 20,
   },
   bullet: {
     display: 'inline-block',
@@ -19,7 +19,8 @@ const styles = {
   title: {
     fontSize: 42,
     fontWeight: "700",
-    marginBottom: "0px"
+    marginBottom: "5px",
+    lineHeight: 1.2
   },
   pos: {
     marginBottom: 12,
