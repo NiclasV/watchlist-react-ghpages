@@ -37,6 +37,7 @@ class App extends Component {
             userid: "1"
           }
         ],
+        recommended: false,
         listname: "Movies to watch",
         listdescription: "A collection of movies to watch", 
         selectedwatchlist: "N/A"
@@ -210,6 +211,25 @@ class App extends Component {
       })
   }
 
+  getRecommended = () => {
+    console.log('gettin recommended')
+    fetch('http://localhost/php/getrecommended.php')
+    .then((response) => response.json())
+    .then((response) => {
+        this.setState({
+          recommended: response,
+        })
+        console.log(response)
+    })
+    .catch((error) => {
+        console.error(error);
+    })
+  }
+
+  componentDidMount = () => {
+    this.getRecommended();
+  }
+
   render() {
     return (
       <div className="App">
@@ -235,6 +255,8 @@ class App extends Component {
               saveMovieToDatabase={this.saveMovieToDatabase}
               selectedWatchlist={this.state.selectedwatchlist}
               saveMovieToList={this.saveMovieToList}
+              recommendedTitles={this.state.recommended}
+              getRecommended={this.getRecommended}
             />} exact  />
 
             <Route path="/ProfilePage" render={(props) => 

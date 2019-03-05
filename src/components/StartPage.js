@@ -37,7 +37,6 @@ class StartPage extends Component {
   render() {
     return (
       <div className="mainContent">
-      {console.log(this.props.singleMovie.search)}
         <Search 
           handleChange={this.props.handleChange}
           movieSearch={this.props.movieSearch}
@@ -55,7 +54,10 @@ class StartPage extends Component {
           createList={this.props.createList}
           getWatchlists={this.props.getWatchlists}
         />
-        <Recommended/>
+        <Recommended
+          getRecommended={this.props.getRecommended}
+          recommendedTitles={this.props.recommendedTitles}
+        />
       </div>
     );
   }

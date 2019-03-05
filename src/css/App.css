@@ -137,6 +137,7 @@ footer {
   font-weight: 400; }
 
 .background {
+  padding: 30px;
   background: url("../images/recommended.jpg");
   background-size: cover;
   position: relative;
@@ -145,15 +146,6 @@ footer {
   margin-top: 40px;
   border-top: 5px solid #4caf50;
   border-bottom: 10px solid #4caf50; }
-
-.layer {
-  background-color: rgba(43, 43, 43, 0.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 25px; }
 
 .flexboxrec {
   display: flex;
@@ -165,8 +157,11 @@ footer {
   margin-top: 50px;
   width: 40%; }
   .recTitle__poster {
-    width: 60%;
-    height: auto;
+    margin: 0 auto;
+    width: 80%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
     margin-bottom: 20px; }
   .recTitle__year {
     font-weight: 100;
@@ -228,8 +223,6 @@ p {
   display: space-between; }
   .movieitem-avatar {
     padding: 0; }
-  .movieitem-text {
-    margin-top: 7px; }
   .movieitem-info {
     display: flex;
     width: 85%;
