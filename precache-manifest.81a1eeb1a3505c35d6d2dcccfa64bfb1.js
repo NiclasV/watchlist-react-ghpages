@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "5ce9822cacdc3731fc4da7ad6d728855",
-    "url": "/watchlist-react-ghpages/static/media/bg-desk.5ce9822c.jpg"
+    "revision": "c26010122f6210d7eaea13471a7d942e",
+    "url": "/watchlist-react-ghpages/static/media/recommended.c2601012.jpg"
   },
   {
     "revision": "c8ef8c0cd3fd0c807386",
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/watchlist-react-ghpages/static/js/runtime~main.ee23cbc4.js"
   },
   {
-    "revision": "c26010122f6210d7eaea13471a7d942e",
-    "url": "/watchlist-react-ghpages/static/media/recommended.c2601012.jpg"
+    "revision": "5ce9822cacdc3731fc4da7ad6d728855",
+    "url": "/watchlist-react-ghpages/static/media/bg-desk.5ce9822c.jpg"
   },
   {
     "revision": "c8ef8c0cd3fd0c807386",
